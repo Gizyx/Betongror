@@ -5,9 +5,6 @@ var length = formEl.Cylinderlength;
 var outDiameter = formEl.outerDiameter;
 var inDiameter = formEl.innerDiameter;
 
-console.log(length)
-
-//+ " cm\xb3"
 
 formEl.addEventListener('submit', function(e){
     e.preventDefault();
@@ -16,19 +13,24 @@ formEl.addEventListener('submit', function(e){
     let outDiameterInt = outDiameter.value
     let inDiameterInt = inDiameter.value
 
-    if(lengthInt == 0 || inDiameterInt == 0 || inDiameterInt == 0 ){
+    if(lengthInt == 0 || inDiameterInt == 0 || outDiameterInt == 0 ){
         outputEl.innerHTML = "Insert values"
+    } else if(inDiameterInt > outDiameterInt) {
+        outputEl.innerHTML = "Inner diameter is larger than outer diameter"
+    } else if(inDiameterInt = outDiameterInt) {
+        outputEl.innerHTML = "Inner diameter is equal to outer diameter"
     } else {
-    inVolumeInt = (inVolume(lengthInt, inDiameterInt)).toFixed(2);
-    outVolumeInt = (outVolume(lengthInt, outDiameterInt)).toFixed(2);
-    bettongAmountInt = (bettongAmount(inVolume(lengthInt, inDiameterInt))).toFixed(2);
-    cost = costCalc(bettongAmount(inVolumeInt)).toFixed(2);
+    volumeInt = ((outVolume(lengthInt, outDiameterInt)) - (inVolume(lengthInt, inDiameterInt)));
+    bettongAmountInt = (bettongAmount(volumeInt)).toFixed(2);
+    cost = costCalc(bettongAmount(volumeInt)).toFixed(2);
 
     outputEl.innerHTML = (
-    "Du trenger: " + bettongAmountInt +
-    "\r\nsekker med betong for å fylle røret med et volum på: " + inVolumeInt + " cm\xb3" +
-    "\r\ntil en kostnad av " + cost + " -,kr"
+    "Røret har ett indre volum på " + volumeInt + " cm\xb3" +
+    "\r\nDu trenger: " + bettongAmountInt + " sekker" +
+    "\r\nBettongen har en kostnad av " + cost + " -,kr"
     )
+    console.log(volumeInt)
+    console.log(outVolume(lengthInt, outDiameterInt))
 }
 });
 

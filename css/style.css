@@ -26,11 +26,11 @@ form {
 }
 h1 {
     margin: 0;
-    background-color:beige;
+    padding: 20px;
     width:100%;
 }
 .borderLine {
-    margin: 10px 0 0 0;
+    margin: 20px 0 20px 0;
     height: 5px;
     background-color: grey;
 }
@@ -39,10 +39,10 @@ h1 {
     background-color: rgb(182, 255, 182);
 }
 textarea {
-    width:100%;
-    
+    width:500px;
+    height: 200px;
     outline: none;
     border: none;
-    background-color:rgba(182, 255, 182, 0.345);
+    background-color:rgb(255, 239, 239);
     resize: none;
 }
