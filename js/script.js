@@ -11,11 +11,12 @@ console.log(length)
 
 formEl.addEventListener('submit', function(e){
     e.preventDefault();
-    lengthInt = length.value
-    outDiameterInt = outDiameter.value
-    inDiameterInt = inDiameter.value
 
-    if(lengthInt === 0 || inDiameterInt === 0 || inDiameterInt === 0 ){
+    let lengthInt = length.value
+    let outDiameterInt = outDiameter.value
+    let inDiameterInt = inDiameter.value
+
+    if(lengthInt == 0 || inDiameterInt == 0 || inDiameterInt == 0 ){
         outputEl.innerHTML = "Insert values"
     } else {
     inVolumeInt = (inVolume(lengthInt, inDiameterInt)).toFixed(2);
@@ -30,10 +31,6 @@ formEl.addEventListener('submit', function(e){
     )
 }
 });
-
-
-
-
 
 function costCalc(bettongAmount) {
     var pris = 89
