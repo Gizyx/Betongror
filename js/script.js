@@ -13,16 +13,18 @@ formEl.addEventListener('submit', function(e){
     let outDiameterInt = outDiameter.value
     let inDiameterInt = inDiameter.value
 
-    if(lengthInt == 0 || inDiameterInt == 0 || outDiameterInt == 0 ){
-        outputEl.innerHTML = "Insert values"
-    } else if(inDiameterInt > outDiameterInt) {
-        outputEl.innerHTML = "Inner diameter is larger than outer diameter"
-    } else if(inDiameterInt = outDiameterInt) {
-        outputEl.innerHTML = "Inner diameter is equal to outer diameter"
-    } else {
     volumeInt = ((outVolume(lengthInt, outDiameterInt)) - (inVolume(lengthInt, inDiameterInt)));
     bettongAmountInt = (bettongAmount(volumeInt)).toFixed(2);
     cost = costCalc(bettongAmount(volumeInt)).toFixed(2);
+
+    if(lengthInt == 0 || inDiameterInt == 0 || outDiameterInt == 0 ){
+        outputEl.innerHTML = "Insert values"
+    } else if(volumeInt == 0) {
+        outputEl.innerHTML = "Inner diameter is larger than outer diameter"
+    } else if(inDiameterInt == outDiameterInt) {
+        outputEl.innerHTML = "Inner diameter is equal to outer diameter"
+    } else {
+
 
     outputEl.innerHTML = (
     "Røret har ett indre volum på " + volumeInt + " cm\xb3" +
